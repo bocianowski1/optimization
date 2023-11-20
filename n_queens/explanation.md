@@ -4,9 +4,9 @@ The goal is to maximize the number of queens on an $N\times N$ chessboard. This 
 
 ## Parameters
 
-- $N\in\Z^+ =$ number of columns and rows.
-- $R=\{1,...,N\}$
-- $C=\{1,...,N\}$
+- $N\in\mathbb{Z}^{+} =$ number of columns and rows.
+- $R=\set {1,...,N}$
+- $C=\set {1,...,N}$
 
 ## Decision Variables
 
@@ -18,13 +18,13 @@ max $\sum_{ij}x_{ij}$ for $i\in R$ and $j\in C$
 
 ## Constraints
 
-1. $\sum_i x_{ij}=1$ for $i\in R$ (rows)
+1. $\sum_j x_{ij}=1$ for $i\in R$ (rows)
 
-2. $\sum_j x_{ij}=1$ for $j\in C$ (columns)
+2. $\sum_i x_{ij}=1$ for $j\in C$ (columns)
 
-3. $\sum_{i+j=k}x_{ij}\leq1$ for $k\in\{2,...,2N\}$ (diagonal)
+3. $\sum_{i+j=k}x_{ij}\leq1$ for $k\in \set {2,...,2N}$ (diagonal)
 
-4. $\sum_{i-j=k}x_{ij}\leq1$ for $k\in\{-(N-1),...,(N-1)\}$ (diagonal)
+4. $\sum_{i-j=k}x_{ij}\leq1$ for $k\in\set {-(N-1),...,(N-1)}$ (diagonal)
 
 ## Explaination for the Constraints
 
@@ -32,7 +32,7 @@ The first two constraints are trivial: there must be $1$ queen at each row and c
 
 ### Top-Left to Bottom-Right
 
-$\sum_{i+j=k}x_{ij}\leq1$ for $k\in\{2,...,2N\}$
+$\sum_{i+j=k}x_{ij}\leq1$ for $k\in\set {2,...,2N}$
 
 The first iteration, when $i=j=1$ and $k=i+j=2$, there is only on spot on the board a queen can be placed: $(1,1)$.
 
@@ -44,7 +44,7 @@ When the board is $8\times8$, $k$ goes up to $16$, the only spot is the bottom-r
 
 ### Top-Right to Bottom-Left
 
-$\sum_{i-j=k}x_{ij}\leq1$ for $k\in\{-(N-1),...,(N-1)\}$
+$\sum_{i-j=k}x_{ij}\leq1$ for $k\in\set {-(N-1),...,(N-1)}$
 
 Let's assume $N$ is $8$.
 
