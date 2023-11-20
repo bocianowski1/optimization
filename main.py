@@ -1,11 +1,10 @@
 from n_queens.solve import n_queens
 from knapsack.solve import knapsack
+from traveling_salesman.solve import traveling_salesman
 
 def main():
     print("\nN-Queens Problem")
-    for n in [4, 8]:
-        print(f"\nN = {n}")
-        n_queens(n)
+    n_queens(N=8)
 
     print("\nKnapsack Problem")
     items = {
@@ -18,6 +17,9 @@ def main():
     for w in [6, 12]:
         print(f"\nCapacity = {w}")
         knapsack(items, w)
+
+    print("\nTraveling Salesman Problem")
+    traveling_salesman()
 
 if __name__ == "__main__":
     main()
