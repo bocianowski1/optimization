@@ -7,7 +7,10 @@ The goal is to maximize the number of queens on an $N\times N$ chessboard. This 
 - $N\in\Z^+ =$ number of columns and rows.
 - $R=\{1,...,N\}$
 - $C=\{1,...,N\}$
-- $x_{ij}=1$ if there is a queen at $(i,j)$ and $0$ otherwise.
+
+## Decision Variables
+
+$x_{ij}=1$ if there is a queen at $(i,j)$ and $0$ otherwise.
 
 ## Objective Function
 
