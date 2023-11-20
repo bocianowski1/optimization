@@ -33,3 +33,7 @@ $B(S)=$ the set of all links between the cities in the subset $S$
 1. The salesman has to visit $n$ cities and can only visit each city **once**. With the first constraint we're making sure we choose arcs such that there is a link in to and out from city $j$.
 
 2. The second constraint is the subtour elimination. What this constraint basically is saying is: look at the set of links $B(S)$ for every subset $S$ in the network $N$. For every subset, the sum of links cannot exceed $|S|-1$, i.e. the number of cities in $S$. This ensures no subtours/cycles in the TSP tour.
+
+<br></br>
+
+> **_NOTE:_** The functions `subtour` and `subtour_elimination` is from [gurobi's TSP example](https://www.gurobi.com/jupyter_models/traveling-salesman/)
