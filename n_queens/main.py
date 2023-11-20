@@ -1,10 +1,9 @@
-import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
 
-def n_queens(N = 8, hide_output = True, show_board = True) -> np.ndarray:
-    rows = np.arange(1, N+1)
-    cols = np.arange(1, N+1)
+def n_queens(N = 8, hide_output = True, show_board = True) -> list[tuple[int, int]]:
+    rows = range(1, N+1)
+    cols = range(1, N+1)
 
     if N < 4:
         raise ValueError("N must be greater than or equal to 4.")
@@ -43,7 +42,7 @@ def n_queens(N = 8, hide_output = True, show_board = True) -> np.ndarray:
         (
             gp.quicksum(
                 x[i, j] for i in rows for j in cols if i+j == k
-            ) <= 1 for k in np.arange(2, 2*N+1)
+            ) <= 1 for k in range(2, 2*N+1)
         ), name="diagonals1"
     )
 
@@ -51,7 +50,7 @@ def n_queens(N = 8, hide_output = True, show_board = True) -> np.ndarray:
         (
             gp.quicksum(
                 x[i, j] for i in rows for j in cols if i-j == k
-            ) <= 1 for k in np.arange(-N+1, N)
+            ) <= 1 for k in range(-N+1, N)
         ), name="diagonals2"
     )
 
@@ -61,12 +60,10 @@ def n_queens(N = 8, hide_output = True, show_board = True) -> np.ndarray:
     if show_board:
         print_chessboard(rows, cols, x)
 
-    return np.array([
-        [x[i, j].x for j in cols] for i in rows
-    ])
+    return [(i, j) for i in rows for j in cols if x[i, j].x > 0.5]
 
 
-def print_chessboard(rows: np.ndarray, cols: np.ndarray, x: gp.tupledict) -> None:
+def print_chessboard(rows: range, cols: range, x: gp.tupledict) -> None:
     for i in rows:
         for j in cols:
             if x[i, j].x > 0.5:
