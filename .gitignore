@@ -1,2 +1,4 @@
 __pycache__
 **/*.DS_Store
+**/license.txt
+**/MA2.zip
